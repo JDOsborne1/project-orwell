@@ -1,10 +1,11 @@
 
 def remnant(Node,Type,Net,Track):
-    #Net is the array of connections
-    #Track is the tracking array which tracks the finalised values
-    #Function specific variables
-    #Node is the node in question
-    #
+    '''
+    Net is the array of connections
+    Track is the tracking array which tracks the finalised values
+    Function specific variables
+    Node is the node in question
+    '''
     Conns = Net[Node] # Vector of connections for the specific node
     SpTrack = Track[Type] #Tracking table sliced for the remnants of the specified type
 
