@@ -1,0 +1,3 @@
+"[T]his time it's a generative text program written in an elderly programming language that creates what appear to be love poems - love poems directed to Huwavos the Almighty.
+
+They're honestly not very good love poems. But it is, our scientists agree, quite difficult to generate love poems procedurally, and quite unusual for a black hole to send love poems at all."
