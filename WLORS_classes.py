@@ -8,7 +8,7 @@ def get(St, func):
         return Va
     except ValueError:
         return get(St,func) 
- ## making a class which has the blueprint of the character that I'm looking for
+
 def titleext(address):
     return address[:4]
 def nameext(address):
@@ -25,7 +25,7 @@ class Library:
         self.name = name
 default_lib = Library('The default library')
 class Environment:
-    def __init__(self, name):
+    def __init__(self, name, network, track):
         '''
         Defines the Environment class, which contains multiple locales and describes 
         and calculates their relationships with each other, consequently allowing 
@@ -33,8 +33,10 @@ class Environment:
         which allows the spillover algorithm to run
         '''
         self.name = name
+        self.network =  network
+        self.track = track
 
-
+ ## making a class which has the blueprint of the character that I'm looking for
 class Character:
     def __init__(self, address, race, class_style, attributes, description, library):
         '''Address is the full phrase that someone would use to identify someone,
@@ -90,7 +92,11 @@ class Locale:
         Currently just returns the name of the Locale, eventually would generate 
         a better description
         '''
-        return 'you are' + str(self.open_closed) + self.name
+        if self.inon():
+            output = " in "
+        else:
+            output = " out "
+        return 'you are' + output + self.name
 
 
 def create_locale():
