@@ -1,3 +1,4 @@
+import numpy as np
 
 def remnant(Node,Type,Net,Track):
     '''
@@ -6,6 +7,7 @@ def remnant(Node,Type,Net,Track):
     Function specific variables
     Node is the node in question
     '''
+    l = len(Net)
     Conns = Net[Node] # Vector of connections for the specific node
     SpTrack = Track[Type] #Tracking table sliced for the remnants of the specified type
 
@@ -43,7 +45,7 @@ def Pathfind(Net, Track, Destination, Location):
 
         Aim = np.where(Seen==max(Seen))[0][0]
 
-        print('At {}'.format(Dict2[Location]))
-        print('Aiming at {}'.format(Dict2[Aim]))
+        print('At {}'.format(Location))
+        print('Aiming at {}'.format(Aim))
         Location = Aim
         

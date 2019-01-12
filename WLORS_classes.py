@@ -16,6 +16,25 @@ def nameext(address):
 def monikerext(address):
     return address[11:]
 
+class Library:
+    def __init__(self, name):
+        '''
+        Defines the library class, which is the current format of the structure of 
+        things known to an entity
+        '''
+        self.name = name
+default_lib = Library('The default library')
+class Environment:
+    def __init__(self, name):
+        '''
+        Defines the Environment class, which contains multiple locales and describes 
+        and calculates their relationships with each other, consequently allowing 
+        movement between them will behave like the collection of arrays and dictionary 
+        which allows the spillover algorithm to run
+        '''
+        self.name = name
+
+
 class Character:
     def __init__(self, address, race, class_style, attributes, description, library):
         '''Address is the full phrase that someone would use to identify someone,
@@ -44,7 +63,8 @@ def character_creation():
                      {i: get(i, int) for i in ['Strength','Intelligence','Agility',
                               'Dexterity','Wisdom','Madness','Luck',
                               'Fortitude','Wits']},
-                     get('Description',str))
+                     get('Description',str),
+                     library = default_lib)
 
 class Locale:
     def __init__(self, name, open_closed, coord, connectionref):
@@ -56,7 +76,7 @@ class Locale:
         self.name = name 
         self.open_closed = open_closed
         self.coord = coord
-        self.connectionref
+        self.connectionref = connectionref
 
 
     def inon(self):
@@ -86,19 +106,3 @@ def create_locale():
 # of the terrain in between the two spaces, but then over time become a dynamic 
 # connectiveness determined at least partially by traffic
 
-class Library:
-    def __init__(self, name):
-        '''
-        Defines the library class, which is the current format of the structure of 
-        things known to an entity
-        '''
-        self.name = name
-
-class Environment:
-    def __init__(self, name):
-        '''
-        Defines the Environment class, which contains multiple locales and describes 
-        and calculates their relationships with each other, consequently allowing 
-        movement between them
-        '''
-        self.name = name
