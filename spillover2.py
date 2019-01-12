@@ -1,3 +1,4 @@
+import numpy as np
 
 def remnant(Node,Type,Net,Track):
     '''
@@ -43,7 +44,7 @@ def Pathfind(Net, Track, Destination, Location):
 
         Aim = np.where(Seen==max(Seen))[0][0]
 
-        print('At {}'.format(Dict2[Location]))
-        print('Aiming at {}'.format(Dict2[Aim]))
+        print('At {}'.format(Location))
+        print('Aiming at {}'.format(Aim))
         Location = Aim
         
