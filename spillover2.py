@@ -31,7 +31,6 @@ def Spillover2(Type,Net,Track):
             for i in np.where(Virtual == max(Virtual)):
                 Track[Type][i]=Virtual[i]
         else:
-            print('No Futher Nodes')
             remaining = False
 
 def Pathfind(Net, Track, Destination, Location):

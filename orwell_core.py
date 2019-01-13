@@ -154,4 +154,3 @@ class Potential:
                                 continue
                         else:
                             continue
-

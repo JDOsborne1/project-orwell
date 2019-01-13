@@ -25,7 +25,7 @@ class Library:
         self.name = name
 default_lib = Library('The default library')
 class Environment:
-    def __init__(self, name, network, track):
+    def __init__(self, name, network, track, interpret_dict, outterpret_dict, scenes):
         '''
         Defines the Environment class, which contains multiple locales and describes 
         and calculates their relationships with each other, consequently allowing 
@@ -35,6 +35,18 @@ class Environment:
         self.name = name
         self.network =  network
         self.track = track
+        self.interpret_dict = interpret_dict
+        self.outterpret_dict = outterpret_dict
+        self.scenes = scenes
+    def maneuver(self,subject):
+        connections = (self.network[self.interpret_dict[subject.locale.connectionref]] != 0)
+        for i in range(len(connections)):
+            if connections[i]:
+                print('You can connect to node {}'.format(self.outterpret_dict[i]))
+        dest = get('where do you want to connect? ', str)
+        for j in self.scenes:
+            if j.connectionref == dest:
+                subject.updatelocale(j)
 
  ## making a class which has the blueprint of the character that I'm looking for
 class Character:
@@ -52,11 +64,7 @@ class Character:
     def localise(self, locale):
         self.locale = locale 
     def updatelocale(self, newlocale):
-        print(self.locale.scene)
-        newlocale = get( 'where next? ',str)
-        for i in self.library.locales:
-            if i.scene == newlocale:
-                self.locale = i
+        self.locale = newlocale
         
 def character_creation():
     return Character(get('Address', str),
