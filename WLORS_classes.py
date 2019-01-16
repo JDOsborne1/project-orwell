@@ -48,6 +48,7 @@ class Environment:
             if j.connectionref == dest:
                 subject.updatelocale(j)
 
+
  ## making a class which has the blueprint of the character that I'm looking for
 class Character:
     def __init__(self, address, race, class_style, attributes, description, library):
@@ -65,6 +66,24 @@ class Character:
         self.locale = locale 
     def updatelocale(self, newlocale):
         self.locale = newlocale
+    def navigate(self,Environment):
+        places = ''
+        for k in range(len(Environment.network)):
+            places += (',' + Environment.outterpret_dict[k]) 
+        print('Known Locales: ' + places[1:])
+        dest = get('where do you want to connect? ', str)
+        Seen = Environment.track[Environment.interpret_dict[dest]] * Environment.network[Environment.interpret_dict[self.locale.connectionref]]
+        Aim = np.where(Seen==max(Seen))[0][0]
+        connections = (Environment.network[Environment.interpret_dict[self.locale.connectionref]] != 0)
+        for i in range(len(connections)):
+            if connections[i]:
+                print('You can connect to node {}'.format(Environment.outterpret_dict[i]))
+
+        print('From the density of remnants your best route goes through ' + Environment.outterpret_dict[Aim])
+        nextnode = get('where do you want to connect? ', str)
+        for j in Environment.scenes:
+            if j.connectionref == nextnode:
+                self.updatelocale(j)
         
 def character_creation():
     return Character(get('Address', str),
