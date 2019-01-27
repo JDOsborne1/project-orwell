@@ -18,7 +18,7 @@ def remnant(Node,Type,Net,Track):
         
     return Value
 
-def Spillover2(Type,Net,Track):
+def spillover2(Type,Net,Track):
     l = len(Net)
     remaining = True
     while remaining:
@@ -33,7 +33,7 @@ def Spillover2(Type,Net,Track):
         else:
             remaining = False
 
-def Pathfind(Net, Track, Destination, Location):
+def pathfind(Net, Track, Destination, Location):
     #Function specific
     Vision = Track[Destination] #Slices out the remnants for the specified destination node
 
@@ -47,4 +47,10 @@ def Pathfind(Net, Track, Destination, Location):
         print('At {}'.format(Location))
         print('Aiming at {}'.format(Aim))
         Location = Aim
-        
+
+def partialPathfind(Net, Track, Destination, Location):
+
+        Seen = Track[Destination] * Net[Location]# The array of potentials directly seen from the location node
+
+        Aim = np.where(Seen==max(Seen))[0][0]
+        return Aim

@@ -9,8 +9,6 @@ mental accelerations provided by the environment.
 ##
 ##Imports
 import numpy as np
-import matplotlib.pyplot as plt
-import random
 ##
 ##Function and Class definitions
 
