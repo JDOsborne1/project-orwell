@@ -1,4 +1,4 @@
-from random import randint
+
 def ran(upper,lower):
 	rn = randint(upper,lower)
 	return rn
