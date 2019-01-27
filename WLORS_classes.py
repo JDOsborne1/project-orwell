@@ -78,11 +78,9 @@ def character_creation():
 
 class Locale:
     def __init__(self, name, open_closed, coord, connectionref):
-        '''
-        I would want to include as an argument to initialiser a connection element
+        ''' I would want to include as an argument to initialiser a connection element
         which would indicate where it can connect to integrating with its spillover
-        connections
-        '''
+        connections'''
         self.name = name 
         self.open_closed = open_closed
         self.coord = coord
@@ -90,17 +88,15 @@ class Locale:
 
 
     def inon(self):
-        '''
-        just describes if the location is enclosed or not
-        ''' 
+        '''just describes if the location is enclosed or not'''
+ 
         return self.open_closed
-
+ 
     def scene(self):
-        '''
-        Currently just returns the name of the Locale, eventually would generate 
-        a better description
-        '''
-        if self.inon():
+        '''Currently just returns the name of the Locale, eventually would generate 
+        a better description'''
+        
+	if self.inon():
             output = " in "
         else:
             output = " out "
